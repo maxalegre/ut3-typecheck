@@ -1,13 +1,15 @@
-import WhileType from "./WhileType.ts"
-import WTInt from "./NTInt.ts"
-export class WTNumeral extends WhileType{
-	constructor(){
+import { WhileType } from "./WhileType";
+import { WTInt } from "./WTInt";
+
+export class WTNumeral extends WhileType {
+	constructor() {
 		super();
 	}
-	public isCompatible(tipo:WhileType){
-		var tipo = tipo.getinstance();
-		if(tipo.getinstance() === WTInt || tipo.getinstance() == WTNumeral) {
+
+	public isCompatible(tipo: WhileType): Boolean {
+		if (tipo.getInstance() === WTInt.instance || tipo.getInstance() == WTNumeral.instance) {
 			return true;
 		}
+		return false;
 	}
 }

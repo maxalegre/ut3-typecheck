@@ -1,11 +1,14 @@
-import WhileType from "./WhileType.ts"
-export class WTBool extends WhileType{
-	constructor(){
+import { WhileType } from "./WhileType";
+
+export class WTBool extends WhileType {
+	constructor() {
 		super();
 	}
-	public isCompatible(tipo:WhileType){
-		if(tipo.getinstance() === WTBool) {
+
+	public isCompatible(tipo: WhileType): Boolean {
+		if (tipo.getInstance() === WTBool.instance) {
 			return true;
 		}
+		return false;
 	}
 }

@@ -6,7 +6,7 @@ export class WhileType {
         if (!WhileType.isCreating) throw new Error("This is a real singleton. Get an instance via WhileType.getInsance();");
     }
 
-    static getInstance(): WhileType {
+    public getInstance(): WhileType {
         if (WhileType.instance === null) {
             WhileType.isCreating = true;
             WhileType.instance = new WhileType();
@@ -16,8 +16,7 @@ export class WhileType {
         return WhileType.instance;
     }
 
-    public isCompatible(): Boolean {
+    public isCompatible(tipo: WhileType): Boolean {
         return false;
     }
-
 }
