@@ -19,4 +19,8 @@ export class WhileType {
     public isCompatible(tipo: WhileType): Boolean {
         return false;
     }
+    public toString(): String {
+        return "";
+    }
+
 }
