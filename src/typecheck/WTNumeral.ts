@@ -6,12 +6,12 @@ export class WTNumeral extends WhileType {
 		super();
 	}
 
-	/*public isCompatible(tipo: WhileType): Boolean {
-		if (tipo.getInstance() === WTInt.instance || tipo.getInstance() == WTNumeral.instance) {
+	public isCompatible(tipo: WhileType): Boolean {
+		if (tipo == this) {
 			return true;
 		}
 		return false;
-	}*/
+	}
 	public toString(): String {
         return "WTNumeral";
 	}

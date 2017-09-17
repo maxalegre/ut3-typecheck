@@ -13,7 +13,6 @@ export class CheckState {
   }
 
   get(id: string): WhileType {
-    console.log("Get de CheckState:"+id);
     return this.vars.get(id);
   }
 

@@ -34,7 +34,14 @@ export class Assignment implements Stmt {
       console.log(this.exp);
       checkstate.set(this.id,this.exp[0].checktype(checkstate));
       console.log("no estaba definido asi que lo defino");
-
+    }
+    else{
+      console.log("esta declarado, chequeo tipo");
+      console.log("Es de tipo:"+this.exp[0].checktype(checkstate));
+      if(checkstate.get(this.id).isCompatible(this.exp[0].checktype(checkstate)))
+      {
+        console.log("es compa");
+      }
     }
     console.log(checkstate.get(this.id));
     return checkstate;

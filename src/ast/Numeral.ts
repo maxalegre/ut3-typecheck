@@ -28,7 +28,6 @@ export class Numeral implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
-    console.log("aca hay que devolver un whiletype");
     return WTNumeral.Instance;
   }
   
