@@ -13,6 +13,7 @@ export * from './Addition';
 export * from './Multiplication';
 export * from './Division';
 export * from './Numeral';
+export * from './Int';
 export * from './Substraction';
 export * from './Variable';
 

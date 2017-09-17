@@ -1,6 +1,6 @@
 export class WhileType {
     private static _instance: WhileType;
-    private constructor()
+    public constructor()
     {
         //...
     }
