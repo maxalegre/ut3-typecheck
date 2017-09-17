@@ -28,6 +28,6 @@ export class TruthValue implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
-    return WTBool.instance;
+    return WTBool.Instance;
   }
 }

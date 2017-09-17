@@ -28,7 +28,7 @@ import {
 
 import { tokens } from './Tokens';
 import { MyLexer } from './Lexer';
-import { WTNumeral } from '../typecheck/WTNumeral';
+
 const lexer = new MyLexer(tokens);
 
 %}
@@ -81,7 +81,7 @@ neg ->
 
 value ->
     "(" exp ")"             {% ([, exp, ]) => (exp) %}
-  | number                  {% ([num]) => (WTNumeral.toString()) %}
+  | number                  {% ([num]) => (new Numeral(num)) %}
   | "true"                  {% () => (new TruthValue(true)) %}
   | "false"                 {% () => (new TruthValue(false)) %}
   | identifier              {% ([id]) => (new Variable(id)) %}

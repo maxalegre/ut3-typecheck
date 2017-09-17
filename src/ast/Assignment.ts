@@ -2,6 +2,7 @@ import { Exp, Stmt } from './ASTNode';
 import { State } from '../interpreter/State';
 import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
+import { WTNumeral } from '../typecheck/WTNumeral';
 
 /**
   Representación de las asignaciones de valores a variables.
@@ -25,22 +26,17 @@ export class Assignment implements Stmt {
   }
 
   evaluate(state: State): State {
-    console.log("entro a evaluate");
     return undefined;
   }
 
   checktype(checkstate: CheckState): CheckState {
-    console.log("entro a CheckState");
-    console.log("Id:"+this.id);
-    console.log("Exp:"+this.exp);
-    console.log("checkState.toString():"+ checkstate.toString());
-    console.log("Checktype:"+checkstate.get(this.id));
     if(checkstate.get(this.id)===undefined){
-      console.log("es undefined, lo vamos a definir");
-      //console.log(checkstate.set(this.id));
+      console.log(this.exp);
+      checkstate.set(this.id,this.exp[0].checktype(checkstate));
+      console.log("no estaba definido asi que lo defino");
 
     }
     console.log(checkstate.get(this.id));
-    return undefined;
+    return checkstate;
   }
 }

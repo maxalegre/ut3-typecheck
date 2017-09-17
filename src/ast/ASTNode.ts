@@ -17,6 +17,7 @@ export interface Exp extends ASTNode {
 
   checktype(checkstate: CheckState): WhileType;
 
+
 }
 
 /**

@@ -5,12 +5,12 @@ export class WTBool extends WhileType {
 		super();
 	}
 
-	public isCompatible(tipo: WhileType): Boolean {
+	/*public isCompatible(tipo: WhileType): Boolean {
 		if (tipo.getInstance() === WTBool.instance) {
 			return true;
 		}
 		return false;
-	}
+	}*/
 	public toString(): String {
         return "WTBool";
     }

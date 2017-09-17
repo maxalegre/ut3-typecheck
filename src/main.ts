@@ -11,6 +11,7 @@ import { ASTNode, Stmt } from './ast/AST';
 import { State } from './interpreter/State';
 import { CheckState } from './typecheck/CheckState';
 import { WhileType } from './typecheck/WhileType';
+import { WTNumeral } from "./typecheck/WTNumeral";
 
 
 console.log("While :: REPL");
@@ -35,6 +36,7 @@ while (true) {
         break;
       }
       case 1: {
+        console.log("entro al case1")
         const node = nodes[0];
         state = node.checktype(state);
         console.log(`\n${state.toString()}`);

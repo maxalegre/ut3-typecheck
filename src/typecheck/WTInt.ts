@@ -5,12 +5,12 @@ export class WTInt extends WhileType {
 		super();
 	}
 
-	public isCompatible(tipo: WhileType): Boolean {
+	/*public isCompatible(tipo: WhileType): Boolean {
 		if (tipo.getInstance() === WTInt.instance) {
 			return true;
 		}
 		return false;
-	}
+	}*/
 	public toString(): String {
         return "WTInt";
 	}
