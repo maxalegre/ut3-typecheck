@@ -32,7 +32,20 @@ export class Addition implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
-    return undefined;
+    var trhs = this.rhs.checktype(checkstate);
+    var tlhs = this.lhs.checktype(checkstate);
+    if(tlhs==WTBool.Instance || trhs == WTBool.Instance){
+      console.log("no podes sumar buleanos crimen, cual haces?, me guardo el error y sigo")
+    }
+    else{
+      if(trhs === tlhs && tlhs === WTInt.Instance){
+        return WTInt.Instance;
+      }
+      else{
+        return WTNumeral.Instance;
+      }
+    }
+    return undefined
 
   }
 }

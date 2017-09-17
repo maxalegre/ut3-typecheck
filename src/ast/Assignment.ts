@@ -37,14 +37,12 @@ export class Assignment implements Stmt {
     else{
       if(checkstate.get(this.id).isCompatible(this.exp[0].checktype(checkstate)))
       {
-<<<<<<< HEAD
-=======
         if(this.exp[0].checktype(checkstate)===WTNumeral.Instance)
           {
             console.log("entro aquiqui")
             checkstate.set(this.id,new WTNumeral());
+          }
         console.log("Listo");
->>>>>>> 2cbcb32a2ed06da8343e9ca0b0b306a7aba775d8
       }
       else{
         console.log("No son compatibles, guardo error y sigo de largo");
