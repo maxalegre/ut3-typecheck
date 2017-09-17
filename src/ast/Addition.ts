@@ -29,6 +29,7 @@ export class Addition implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
+    console.log("lhs:"+this.lhs)
     return undefined;
   }
 }

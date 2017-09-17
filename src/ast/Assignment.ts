@@ -40,7 +40,10 @@ export class Assignment implements Stmt {
       console.log("Es de tipo:"+this.exp[0].checktype(checkstate));
       if(checkstate.get(this.id).isCompatible(this.exp[0].checktype(checkstate)))
       {
-        console.log("es compa");
+        console.log("Listo");
+      }
+      else{
+        console.log("No son compatibles");
       }
     }
     console.log(checkstate.get(this.id));
