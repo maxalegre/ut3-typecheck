@@ -25,10 +25,22 @@ export class Assignment implements Stmt {
   }
 
   evaluate(state: State): State {
+    console.log("entro a evaluate");
     return undefined;
   }
 
   checktype(checkstate: CheckState): CheckState {
+    console.log("entro a CheckState");
+    console.log("Id:"+this.id);
+    console.log("Exp:"+this.exp);
+    console.log("checkState.toString():"+ checkstate.toString());
+    console.log("Checktype:"+checkstate.get(this.id));
+    if(checkstate.get(this.id)===undefined){
+      console.log("es undefined, lo vamos a definir");
+      //console.log(checkstate.set(this.id));
+
+    }
+    console.log(checkstate.get(this.id));
     return undefined;
   }
 }

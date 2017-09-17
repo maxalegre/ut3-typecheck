@@ -12,6 +12,6 @@ export class WTBool extends WhileType {
 		return false;
 	}
 	public toString(): String {
-        return "boolean";
+        return "WTBool";
     }
 }

@@ -12,7 +12,7 @@ export class WTInt extends WhileType {
 		return false;
 	}
 	public toString(): String {
-        return "int";
+        return "WTInt";
 	}
 	
 }

@@ -48,6 +48,7 @@ while (true) {
     }
 
   } catch(parseError) {
+    console.log("Hubo en error en el parse: ");
     console.log(parseError);
   }
 }

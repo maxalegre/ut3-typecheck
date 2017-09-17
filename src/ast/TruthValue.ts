@@ -2,6 +2,7 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
+import { WTBool } from '../typecheck/WTBool';
 
 /**
   Representación de valores de verdad (cierto o falso).
@@ -27,6 +28,6 @@ export class TruthValue implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
-    return undefined;
+    return WTBool.instance;
   }
 }

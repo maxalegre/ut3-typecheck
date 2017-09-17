@@ -21,7 +21,7 @@ export class Declaration implements Stmt {
   }
 
   unparse(): string {
-    return `${this.type.toS()} ${this.id}`;
+    return `${this.type.toString()} ${this.id}`;
   }
 
   evaluate(state: State): State {

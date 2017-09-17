@@ -13,6 +13,6 @@ export class WTNumeral extends WhileType {
 		return false;
 	}
 	public toString(): String {
-        return "Numeral";
+        return "WTNumeral";
     }
 }
