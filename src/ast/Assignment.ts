@@ -40,6 +40,11 @@ export class Assignment implements Stmt {
       console.log("Es de tipo:"+this.exp[0].checktype(checkstate));
       if(checkstate.get(this.id).isCompatible(this.exp[0].checktype(checkstate)))
       {
+        if(this.exp[0].checktype(checkstate)===WTNumeral.Instance)
+          {
+            console.log("entro aquiqui")
+            checkstate.set(this.id,new WTNumeral());
+          }
         console.log("Listo");
       }
       else{

@@ -23,7 +23,8 @@ import {
   Substraction,
   TruthValue,
   Variable,
-  WhileDo
+  WhileDo,
+  Int
 } from '../ast/AST';
 
 import { tokens } from './Tokens';
@@ -85,6 +86,8 @@ value ->
   | "true"                  {% () => (new TruthValue(true)) %}
   | "false"                 {% () => (new TruthValue(false)) %}
   | identifier              {% ([id]) => (new Variable(id)) %}
+  | int                  {% ([int]) => (new Int(int)) %}
+
 
 
 # Atoms
@@ -93,6 +96,9 @@ identifier ->
     %identifier             {% ([id]) => (id.value) %}
 
 number ->
-    %integer                {% ([id]) => (id.value) %}
-  | %hex                    {% ([id]) => (id.value) %}
+  %hex                    {% ([id]) => (id.value) %}
   | %float                  {% ([id]) => (id.value) %}
+
+  int ->
+    %integer                {% ([id]) => (id.value) %}
+
