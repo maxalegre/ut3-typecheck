@@ -22,10 +22,11 @@ export class Variable implements Exp {
   }
 
   evaluate(state: State): any {
+    
     return undefined;
   }
 
   checktype(checkstate: CheckState): WhileType {
-    return undefined;
+    return checkstate.get(this.id);
   }
 }

@@ -2,6 +2,9 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
+import { WTNumeral } from '../typecheck/WTNumeral';
+import { WTBool } from '../typecheck/WTBool';
+import { WTInt } from '../typecheck/WTInt';
 
 /**
   Representación de sumas.
@@ -29,7 +32,7 @@ export class Addition implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
-    console.log("lhs:"+this.lhs)
     return undefined;
+
   }
 }
