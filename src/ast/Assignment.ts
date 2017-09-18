@@ -33,11 +33,8 @@ export class Assignment implements Stmt {
     if(checkstate.get(this.id)===undefined){
       console.log(this.exp);
       checkstate.set(this.id,this.exp[0].checktype(checkstate));
-      console.log("no estaba definido asi que lo defino");
     }
     else{
-      console.log("esta declarado, chequeo tipo");
-      console.log("Es de tipo:"+this.exp[0].checktype(checkstate));
       if(checkstate.get(this.id).isCompatible(this.exp[0].checktype(checkstate)))
       {
         if(this.exp[0].checktype(checkstate)===WTNumeral.Instance)
@@ -48,7 +45,7 @@ export class Assignment implements Stmt {
         console.log("Listo");
       }
       else{
-        console.log("No son compatibles");
+        console.log("No son compatibles, guardo error y sigo de largo");
       }
     }
     console.log(checkstate.get(this.id));

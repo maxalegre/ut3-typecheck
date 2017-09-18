@@ -7,7 +7,11 @@ export class WTNumeral extends WhileType {
 	}
 
 	public isCompatible(tipo: WhileType): Boolean {
+<<<<<<< HEAD
 		if (tipo == this||tipo===WTInt.Instance) {
+=======
+		if (tipo === this || tipo === WTNumeral.Instance) {
+>>>>>>> da17cafd583a436324c1465ecd63fd4b6f34f5a2
 			return true;
 		}
 		return false;
