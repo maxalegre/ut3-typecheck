@@ -96,9 +96,9 @@ value ->
   | int                     {% ([int]) => (new Int(int)) %}
 
 type ->
-  "int"                     {% () => (WTInt.Instance)%}
- |"boolean"                 {% () => (WTBool.Instance)%}
- |"Numeral"                 {% () => (WTNumeral.Instance)%}
+   "int"                    {% () => (WTInt.Instance)%}
+ | "boolean"                {% () => (WTBool.Instance)%}
+ | "num"                    {% () => (WTNumeral.Instance)%}
 # Atoms
 
 identifier ->

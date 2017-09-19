@@ -18,7 +18,7 @@ export class WTNumeral extends WhileType {
 	}
 
 	public toString(): String {
-        return "Numeral";
+        return "num";
 	}
 
 	public getInstance(): WhileType {
