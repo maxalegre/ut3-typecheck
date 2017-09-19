@@ -34,17 +34,25 @@ export class Multiplication implements Exp {
   checktype(checkstate: CheckState): WhileType {
     var trhs = this.rhs.checktype(checkstate);
     var tlhs = this.lhs.checktype(checkstate);
-    if(tlhs==WTBool.Instance || trhs == WTBool.Instance){
-      console.log("no podes operar con buleanos crimen, cual haces?, me guardo el error y sigo")
+
+    //Si es Numeral y (Numeral o Int)
+    if (tlhs === WTNumeral.Instance && (trhs === WTInt.Instance || trhs === WTNumeral.Instance)) {
+      return WTNumeral.Instance;
     }
-    else{
-      if(trhs === tlhs && tlhs === WTInt.Instance){
+    //Si es Int
+    else if (tlhs === WTInt.Instance) {
+      //Y Int
+      if (trhs === WTInt.Instance) {
         return WTInt.Instance;
       }
-      else{
-        return WTNumeral.Instance;
+      //Y Numeral
+      else if (trhs === WTNumeral.Instance) {
+        return WTNumeral.Instance
       }
     }
-    return undefined
+    //Si no es Numeral Ni Int
+    else {
+      console.log("Guardar Error [No se pueden MULTIPLICAR variables de tipo " + tlhs.toString() + " con " + trhs.toString() + "] Y Seguir")
+    }
   }
 }
