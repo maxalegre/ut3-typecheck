@@ -2,6 +2,7 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
+import { WTBool } from './AST';
 
 /**
   Representación de conjunciones booleanas (AND).
@@ -29,6 +30,14 @@ export class Conjunction implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
-    return undefined;
+    var trhs = this.rhs.checktype(checkstate);
+    var tlhs = this.lhs.checktype(checkstate);
+    if(trhs == WTBool.Instance && tlhs == WTBool.Instance){
+      return WTBool.Instance;
+    }
+    else{
+      console.log("Guardar Error [No se pueden ^ variables de tipo " + tlhs.toString() + " con " + trhs.toString() + "] Y Seguir")      
+    }
+
   }
 }
