@@ -29,6 +29,27 @@ export class CompareLessOrEqual implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
-    return undefined;
+    var trhs = this.rhs.checktype(checkstate);
+    var tlhs = this.lhs.checktype(checkstate);
+
+    //Si es Numeral y (Numeral o Int)
+    if (tlhs === WTNumeral.Instance && (trhs === WTInt.Instance || trhs === WTNumeral.Instance)) {
+      return WTNumeral.Instance;
+    }
+    //Si es Int
+    else if (tlhs === WTInt.Instance) {
+      //Y Int
+      if (trhs === WTInt.Instance) {
+        return WTBool.Instance;
+      }
+      //Y Numeral
+      else if (trhs === WTNumeral.Instance) {
+        return WTBool.Instance
+      }
+    }
+    //Si no es Numeral Ni Int
+    else {
+      console.log("Guardar Error [No se pueden CMPARAR >= variables de tipo " + tlhs.toString() + " con " + trhs.toString() + "] Y Seguir")
+    }
   }
 }

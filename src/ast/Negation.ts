@@ -2,6 +2,7 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
+import { WTBool } from './AST';
 
 /**
   Representación de las negaciones de expresiones booleanas.
@@ -27,6 +28,12 @@ export class Negation implements Exp {
   }
 
   checktype(checkstate: CheckState): WhileType {
-    return undefined;
+    var trhs = this.exp.checktype(checkstate);
+    if (trhs == WTBool.Instance) {
+      return WTBool.Instance;
+    }
+    else {
+      console.log("Guardar Error [No se pueden Negar variables de tipo " + trhs.toString() + "] Y Seguir")
+    }
   }
 }

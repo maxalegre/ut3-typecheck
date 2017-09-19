@@ -30,7 +30,7 @@ export const tokens = {
   'true':       'true',
   'false':      'false',
   'int':        'int',
-  'Numeral':    'Numeral',
+  'num':        'num',
   'boolean':    'boolean',
   
 
