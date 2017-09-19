@@ -7,26 +7,22 @@ export class WTInt extends WhileType {
 	}
 
 	public isCompatible(tipo: WhileType): Boolean {
-		if (tipo === this||tipo===WTNumeral.Instance) {
-			console.log(tipo.toString);
-			
+		if (tipo === this) {
 			return true;
 		}
 		return false;
 	}
 
-	public isCompatibleAs(tipo: WhileType): WhileType {
-		if (tipo === this) {
-			return WTInt.Instance;
-		}
-		else if (tipo === WTNumeral.Instance)
-		{
-			return WTNumeral.Instance;			
-		}
-		return null;
+	public getInstance(): WhileType {
+		return this;
 	}
+
+	public coerce(tipo: WhileType): WhileType {
+		return tipo; 
+	}
+
 	public toString(): String {
-        return "int";
+		return "int";
 	}
-	
+
 }

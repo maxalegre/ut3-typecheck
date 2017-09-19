@@ -5,6 +5,8 @@
 import {
   Addition,
   Assignment,
+  Declaration,
+  DeclarationAssignment,
   CompareEqual,
   CompareNotEqual,
   CompareLessOrEqual,
@@ -28,7 +30,6 @@ import {
   WTBool,
   WTInt,
   WTNumeral,
-  DeclarationAssignment,
 } from '../ast/AST';
 
 import { tokens } from './Tokens';
@@ -48,7 +49,8 @@ stmt ->
   | "if" exp "then" stmt                  {% ([, cond, , thenBody]) => (new IfThen(cond, thenBody)) %}
 
 stmtelse ->
-    type identifier "=" exp ";"           {% ([type,identifier, ,exp, ]) => (new DeclarationAssignment(type,identifier,exp)) %}
+    type identifier ";"                   {% ([type, identifier, ]) => (new Declaration(type, identifier)) %}
+  | type identifier "=" exp ";"           {% ([type, identifier, , exp, ]) => (new DeclarationAssignment(type, identifier, exp)) %}
   | identifier "=" exp ";"                {% ([id, , exp, ]) => (new Assignment(id, exp)) %}
   | "{" stmt:* "}"                        {% ([, statements, ]) => (new Sequence(statements)) %}
   | "while" exp "do" stmt                 {% ([, cond, , body]) => (new WhileDo(cond, body)) %}
@@ -94,9 +96,9 @@ value ->
   | int                     {% ([int]) => (new Int(int)) %}
 
 type ->
-  "int"                     {% () => (new WTInt())%}
- |"boolean"                 {% () => (new WTBool())%}
- |"Numeral"                 {% () => (new WTNumeral())%}
+  "int"                     {% () => (WTInt.Instance)%}
+ |"boolean"                 {% () => (WTBool.Instance)%}
+ |"Numeral"                 {% () => (WTNumeral.Instance)%}
 # Atoms
 
 identifier ->

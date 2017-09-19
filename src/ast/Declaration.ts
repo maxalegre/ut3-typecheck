@@ -4,14 +4,13 @@ import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
 
 /**
-  Representación de las asignaciones de valores a variables.
+  Representación de las declaraciones de valores a variables.
 */
 export class Declaration implements Stmt {
-
   id: string;
   type: WhileType;
 
-  constructor(id: string, type: WhileType) {
+  constructor(type: WhileType, id: string) {
     this.id = id;
     this.type = type;
   }
@@ -29,7 +28,16 @@ export class Declaration implements Stmt {
   }
 
   checktype(checkstate: CheckState): CheckState {
+    var getState = checkstate.get(this.id);
+    console.log(this.type);
 
-    return undefined;
+    if (getState === undefined) {
+      checkstate.set(this.id, this.type.getInstance());
+    } else {
+      console.log("La variable " + this.id + " ya está declarada como " + getState);
+    }
+
+    return checkstate;
   }
+
 }

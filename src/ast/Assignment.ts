@@ -30,21 +30,23 @@ export class Assignment implements Stmt {
   }
 
   checktype(checkstate: CheckState): CheckState {
-    if(checkstate.get(this.id)===undefined){
-      console.log(this.exp);
-      checkstate.set(this.id,this.exp[0].checktype(checkstate));
-    }
-    else{
-      if(checkstate.get(this.id).isCompatible(this.exp[0].checktype(checkstate)))
-      {
-        if(this.exp[0].checktype(checkstate)===WTNumeral.Instance)
-          {
-            console.log("entro aquiqui")
-            checkstate.set(this.id,new WTNumeral());
-          }
-        console.log("Listo");
+    console.log(this.exp);
+
+    var state = checkstate.get(this.id);
+    if (state === undefined) {
+      checkstate.set(this.id, this.exp[0].checktype(checkstate));
+    } else {
+      if (state.isCompatible(this.exp[0].checktype(checkstate))) {
+        checkstate.set(this.id, state.coerce(this.exp[0]));
+
+
+        // if (this.exp[0].checktype(checkstate) === WTNumeral.Instance) {
+        //   console.log("entro aquiqui")
+        //   checkstate.set(this.id, new WTNumeral());
+        // }
+        // console.log("Listo");
       }
-      else{
+      else {
         console.log("No son compatibles, guardo error y sigo de largo");
       }
     }
