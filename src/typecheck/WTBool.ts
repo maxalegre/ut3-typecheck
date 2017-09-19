@@ -12,6 +12,13 @@ export class WTBool extends WhileType {
 		return false;
 	}
 	public toString(): String {
-        return "WTBool";
-    }
+        return "boolean";
+	}
+	
+	public isCompatibleAs(tipo: WhileType): WhileType {
+		if (tipo === this) {
+			return WTBool.Instance;
+		}
+		return null;
+	}
 }

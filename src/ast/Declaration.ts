@@ -29,6 +29,7 @@ export class Declaration implements Stmt {
   }
 
   checktype(checkstate: CheckState): CheckState {
+
     return undefined;
   }
 }

@@ -16,4 +16,7 @@ export class WhileType {
         return "";
     }
 
+    public isCompatibleAs(tipo: WhileType): WhileType {
+        return null;
+	}
 }

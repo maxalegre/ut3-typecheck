@@ -14,8 +14,19 @@ export class WTInt extends WhileType {
 		}
 		return false;
 	}
+
+	public isCompatibleAs(tipo: WhileType): WhileType {
+		if (tipo === this) {
+			return WTInt.Instance;
+		}
+		else if (tipo === WTNumeral.Instance)
+		{
+			return WTNumeral.Instance;			
+		}
+		return null;
+	}
 	public toString(): String {
-        return "WTInt";
+        return "int";
 	}
 	
 }

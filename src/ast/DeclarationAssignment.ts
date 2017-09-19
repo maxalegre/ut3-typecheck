@@ -19,11 +19,11 @@ export class DeclarationAssignment implements Stmt {
   }
 
   toString(): string {
-    return `Declaration(${this.type.toString()},${this.id},${this.exp.toString})`;
+    return `DeclarationAssignment(${this.type.toString()},${this.id},${this.exp.toString})`;
   }
 
   unparse(): string {
-    return `${this.type.toString()} ${this.id} = ${this.exp.toString};`;
+    return `${this.type} ${this.id} = ${this.exp.unparse()};`;
   }
 
   evaluate(state: State): State {
@@ -31,6 +31,28 @@ export class DeclarationAssignment implements Stmt {
   }
 
   checktype(checkstate: CheckState): CheckState {
-    return undefined;
+
+    if (checkstate.get(this.id)===undefined)
+      {
+        console.log(this.exp);
+        
+        if(this.exp[0].checktype(checkstate) === this.type[0].Instance)
+          {
+            console.log("llega?");
+            checkstate.set(this.id,this.exp[0].checktype(checkstate));
+            console.log("si");
+            
+          }
+        else
+          {
+            console.log("La variable "+this.id+" no puede ser declarada como "+ this.type[0].toString()+ " y ser asignada a un " +
+            this.exp.checktype(checkstate));            
+          }
+      }
+    else
+      {
+        console.log("La variable "+this.id+" ya está declarada como "+ checkstate.get(this.id));
+      }
+    return checkstate;
   }
 }

@@ -3,10 +3,15 @@ export * from './ASTNode';
 
 // Statements
 export * from './Assignment';
+export * from './Declaration';
+export * from './DeclarationAssignment';
 export * from './IfThenElse';
 export * from './IfThen';
 export * from './Sequence';
 export * from './WhileDo';
+export * from '../typecheck/WTBool';
+export * from '../typecheck/WTInt';
+export * from '../typecheck/WTNumeral';
 
 // AExp
 export * from './Addition';

@@ -36,7 +36,7 @@ while (true) {
         break;
       }
       case 1: {
-        //console.log("entro al case1")
+        console.log("entro al case1")
         const node = nodes[0];
         state = node.checktype(state);
         console.log(`\n${state.toString()}`);

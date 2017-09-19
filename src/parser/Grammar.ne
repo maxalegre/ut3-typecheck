@@ -24,7 +24,11 @@ import {
   TruthValue,
   Variable,
   WhileDo,
-  Int
+  Int,
+  WTBool,
+  WTInt,
+  WTNumeral,
+  DeclarationAssignment,
 } from '../ast/AST';
 
 import { tokens } from './Tokens';
@@ -44,7 +48,8 @@ stmt ->
   | "if" exp "then" stmt                  {% ([, cond, , thenBody]) => (new IfThen(cond, thenBody)) %}
 
 stmtelse ->
-    identifier "=" exp ";"                {% ([id, , exp, ]) => (new Assignment(id, exp)) %}
+    type identifier "=" exp ";"           {% ([type,identifier, ,exp, ]) => (new DeclarationAssignment(type,identifier,exp)) %}
+  | identifier "=" exp ";"                {% ([id, , exp, ]) => (new Assignment(id, exp)) %}
   | "{" stmt:* "}"                        {% ([, statements, ]) => (new Sequence(statements)) %}
   | "while" exp "do" stmt                 {% ([, cond, , body]) => (new WhileDo(cond, body)) %}
   | "if" exp "then" stmtelse "else" stmt  {% ([, cond, , thenBody, , elseBody]) => (new IfThenElse(cond, thenBody, elseBody)) %}
@@ -86,10 +91,12 @@ value ->
   | "true"                  {% () => (new TruthValue(true)) %}
   | "false"                 {% () => (new TruthValue(false)) %}
   | identifier              {% ([id]) => (new Variable(id)) %}
-  | int                  {% ([int]) => (new Int(int)) %}
+  | int                     {% ([int]) => (new Int(int)) %}
 
-
-
+type ->
+  "int"                     {% () => (new WTInt())%}
+ |"boolean"                 {% () => (new WTBool())%}
+ |"Numeral"                 {% () => (new WTNumeral())%}
 # Atoms
 
 identifier ->

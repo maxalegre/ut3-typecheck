@@ -34,18 +34,30 @@ export class Addition implements Exp {
   checktype(checkstate: CheckState): WhileType {
     var trhs = this.rhs.checktype(checkstate);
     var tlhs = this.lhs.checktype(checkstate);
-    if(tlhs==WTBool.Instance || trhs == WTBool.Instance){
-      console.log("no podes sumar buleanos crimen, cual haces?, me guardo el error y sigo")
-    }
-    else{
-      if(trhs === tlhs && tlhs === WTInt.Instance){
-        return WTInt.Instance;
-      }
-      else{
+
+    //Si es Numeral y (Numeral o Int)
+    if(tlhs === WTNumeral.Instance && (trhs === WTInt.Instance||trhs === WTNumeral.Instance))
+      {
         return WTNumeral.Instance;
       }
+    //Si es Int
+    else if (tlhs === WTInt.Instance)
+      {
+        //Y Int
+        if (trhs === WTInt.Instance)
+          {
+            return WTInt.Instance;
+          }
+        //Y Numeral
+        else if(trhs === WTNumeral.Instance)
+          {
+            return WTNumeral.Instance
+          }
+      }
+    //Si no es Numeral Ni Int
+    else
+      {
+        console.log("Guardar Error [No se pueden SUMAR variables de tipo "+tlhs.toString()+" con "+ trhs.toString()+ "] Y Seguir")                  
+      }
     }
-    return undefined
-
-  }
 }
