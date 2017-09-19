@@ -3,6 +3,7 @@ import { WhileType } from './WhileType';
 export class CheckState {
 
   vars: Map<string, WhileType>;
+  errors: string[];
 
   constructor() {
     this.vars = new Map<string, WhileType>();
@@ -19,4 +20,16 @@ export class CheckState {
   set(id: string, type: WhileType) {
     this.vars.set(id, type);
   }
+
+  error(message:string)
+  {
+    this.errors.push(message);
+    console.log(message);
+  }
+
+  getErrors(): string[]
+  {
+    return this.errors;
+  }
+
 }

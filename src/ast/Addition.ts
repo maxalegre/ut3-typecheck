@@ -57,7 +57,7 @@ export class Addition implements Exp {
     //Si no es Numeral Ni Int
     else
       {
-        console.log("Guardar Error [No se pueden SUMAR variables de tipo "+tlhs.toString()+" con "+ trhs.toString()+ "] Y Seguir")                  
+        checkstate.error("Guardar Error [No se pueden SUMAR variables de tipo "+tlhs.toString()+" con "+ trhs.toString()+ "] Y Seguir");                 
       }
     }
 }
