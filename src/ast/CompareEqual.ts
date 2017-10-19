@@ -50,8 +50,10 @@ export class CompareEqual implements Exp {
             return WTBool.Instance
           }
       }
-    //Si no es Numeral Ni Int
-    else if (trhs === WTBool.Instance && tlhs === WTBool.Instance )
+    //Si son booleanos 
+    else if (trhs === WTBool.Instance && tlhs === WTBool.Instance ){
+      return WTBool.Instance;
+    }
     else
       {
         console.log("Guardar Error [No se pueden COMPARAR variables de tipo "+tlhs.toString()+" con "+ trhs.toString()+ "] Y Seguir")                  

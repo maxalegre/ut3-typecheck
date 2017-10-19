@@ -36,28 +36,23 @@ export class Addition implements Exp {
     var tlhs = this.lhs.checktype(checkstate);
 
     //Si es Numeral y (Numeral o Int)
-    if(tlhs === WTNumeral.Instance && (trhs === WTInt.Instance||trhs === WTNumeral.Instance))
-      {
-        return WTNumeral.Instance;
-      }
+    if (tlhs === WTNumeral.Instance && (trhs === WTInt.Instance || trhs === WTNumeral.Instance)) {
+      return WTNumeral.Instance;
+    }
     //Si es Int
-    else if (tlhs === WTInt.Instance)
-      {
-        //Y Int
-        if (trhs === WTInt.Instance)
-          {
-            return WTInt.Instance;
-          }
-        //Y Numeral
-        else if(trhs === WTNumeral.Instance)
-          {
-            return WTNumeral.Instance
-          }
+    else if (tlhs === WTInt.Instance) {
+      //Y Int
+      if (trhs === WTInt.Instance) {
+        return WTInt.Instance;
       }
-    //Si no es Numeral Ni Int
-    else
-      {
-        console.log("Guardar Error [No se pueden SUMAR variables de tipo "+tlhs.toString()+" con "+ trhs.toString()+ "] Y Seguir")                  
+      //Y Numeral
+      else if (trhs === WTNumeral.Instance) {
+        return WTNumeral.Instance
       }
     }
+    //Si no es Numeral Ni Int
+    else {
+      console.log("Guardar Error [No se pueden SUMAR variables de tipo " + tlhs.toString() + " con " + trhs.toString() + "] Y Seguir")
+    }
+  }
 }

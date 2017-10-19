@@ -2,7 +2,7 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
-import { WTNumeral, WTInt } from './AST';
+import { WTNumeral, WTInt, WTBool } from './AST';
 
 /**
   Representación de las comparaciones por menor o igual.
@@ -41,16 +41,16 @@ export class CompareLess implements Exp {
     else if (tlhs === WTInt.Instance) {
       //Y Int
       if (trhs === WTInt.Instance) {
-        return WTInt.Instance;
+        return WTBool.Instance;
       }
       //Y Numeral
       else if (trhs === WTNumeral.Instance) {
-        return WTNumeral.Instance
+        return WTBool.Instance
       }
     }
     //Si no es Numeral Ni Int
     else {
-      console.log("Guardar Error [No se pueden COMPARAR > variables de tipo " + tlhs.toString() + " con " + trhs.toString() + "] Y Seguir")
+      console.log("Guardar Error [No se pueden CMPARAR <= variables de tipo " + tlhs.toString() + " con " + trhs.toString() + "] Y Seguir")
     }
   }
 }

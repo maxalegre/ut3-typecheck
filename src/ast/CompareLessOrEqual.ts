@@ -2,6 +2,7 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
+import { WTNumeral, WTInt, WTBool } from './AST';
 
 /**
   Representación de las comparaciones por menor o igual.
