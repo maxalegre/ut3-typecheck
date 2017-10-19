@@ -2,6 +2,9 @@ import { Exp, Stmt } from './ASTNode';
 import { State } from '../interpreter/State';
 import { CheckState } from '../typecheck/CheckState';
 import { WhileType } from '../typecheck/WhileType';
+import { WTBool } from '../typecheck/WhileType';
+
+
 
 /**
   Representación de las sentencias condicionales.
@@ -28,6 +31,12 @@ export class IfThen implements Stmt {
   }
 
   checktype(checkstate: CheckState): CheckState {
-    return undefined;
+    if(!this.cond.checktype(checkstate)===WTBool.Instance)
+      {
+        checkstate.error("La condición no es de tipo booleana")
+      }
+    var aux: CheckState = Object.assign({},checkstate);
+    this.thenBody.checktype(aux);
+    return checkstate;
   }
 }

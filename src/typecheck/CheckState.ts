@@ -21,12 +21,23 @@ export class CheckState {
     this.vars.set(id, type);
   }
 
+<<<<<<< HEAD
+  error(message:string)
+  {
+    this.errors.push(message);
+    console.log(message);
+  }
+
+  getErrors(): string[]
+  {
+=======
   error(message: string) {
     console.log(message);
     this.errors.push(message);
   }
 
   getErrors(): string[] {
+>>>>>>> f7347efc114b439f5fca6a69b1fdb23165e9ac0f
     return this.errors;
   }
 

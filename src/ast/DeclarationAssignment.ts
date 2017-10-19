@@ -10,7 +10,7 @@ import { WTInt } from '../typecheck/WTInt';
 export class DeclarationAssignment implements Stmt {
   id: string;
   type: WhileType;
-  exp: Exp
+  exp: Exp;
 
   constructor(type: WhileType, id: string, exp: Exp) {
     this.id = id;
